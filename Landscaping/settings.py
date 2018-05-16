@@ -29,8 +29,11 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# These apps are included by default
+# Must include any apps that you create here e.g. plots
 
 INSTALLED_APPS = [
+    'plots.apps.PlotsConfig', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,6 +76,8 @@ WSGI_APPLICATION = 'Landscaping.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# Name of our database and it's absolute PATH
+# db.sqlite3 is setup by default by Django
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

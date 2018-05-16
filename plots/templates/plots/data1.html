@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+{% load static %}
+
+<body>
+
+<!-- Navigation Bar-->
+<div class="w3-bar w3-theme w3-padding">
+  <a href="#" class="w3-bar-item w3-button w3-padding-16">Home</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-16">About</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-16">Contact</a>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button w3-padding-16">
+      Data <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="javascript:void(0)" class="w3-bar-item w3-button">Blood Cell Differentiation</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button">Neuronal Differentiation</a>
+    </div>
+  </div>
+</div>
+
+<div class="w3-row w3-border w3-padding">
+  <div class="w3-half w3-container w3-border">
+    <h4><b>MEGAKARYOCYTE & ERYTHROCYTE DIFFERENTIATION</b></h4>
+    <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+  </div>
+  <div class="w3-half w3-container w3-border">
+    <img src="{% static 'plots/images/diff_trad.png' %}">
+  </div>
+</div>
+<br>
+
+<hr>
+<div class="w3-center">
+  <h4><b>GENE PAIRS WITH HIGHEST MUTUAL INFORMATION</b></h4>
+  <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<br>
