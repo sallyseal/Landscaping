@@ -12,5 +12,6 @@ urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('contact/', views.ContactView.as_view(), name='contact'),
-    path('data1/', views.Data1View.as_view(), name='data1'),
+    path('mi1/', views.Mi1View.as_view(), name='mi1'),
+    path('landscape/', views.LandscapeView.as_view(), name='landscape'),
 ]

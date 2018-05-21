@@ -9,18 +9,24 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
+<!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 {% load static %}
+
+<!-- My CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'plots/style.css' %}" />
 
 <body>
 
 <!-- Navigation Bar-->
-<div class="w3-bar w3-theme w3-padding">
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">Home</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">About</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">Contact</a>
+<div class="w3-bar w3-theme-d4 w3-padding">
+  <a href="#" class="w3-bar-item w3-button w3-padding-16"><b>Home</b></a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-16"><b>About</b></a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-16"><b>Contact</b></a>
   <div class="w3-dropdown-hover">
     <button class="w3-button w3-padding-16">
-      Data <i class="fa fa-caret-down"></i>
+      <b>Data</b> <i class="fa fa-caret-down"></i>
     </button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
       <a href="javascript:void(0)" class="w3-bar-item w3-button">Blood Cell Differentiation</a>
@@ -28,3 +34,8 @@
     </div>
   </div>
 </div>
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

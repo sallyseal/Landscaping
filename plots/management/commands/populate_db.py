@@ -1,3 +1,6 @@
+# This script reads the expression data and mi data from respective csv files
+# and populates the Django database tables according to models.py
+
 import os
 from django.core.management.base import BaseCommand
 from plots.models import Gene, Sample, Expression, MutualInformation

@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
+<!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 {% load static %}
 
 <body>
@@ -45,3 +48,67 @@
   <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 <br>
+
+
+
+{% block content %}
+    <h2>MI test</h2>
+
+
+    <p>{{ gene1_id }}</p>
+    <p>{{ mi_value }}</p>
+    <p>{{ gene_pairs }}</p>
+
+    <p> {{ a }}</p>
+
+{% endblock %}
+
+
+
+<!-- PLOTTING THE MI GRAPH -->
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<!-- JS FOR MI PLOT -->
+  <script>
+  // {% with y_val=mi_value %}
+  // {% with x_val=gene_pairs %}
+  x_val = JSON.parse('{{ gene_pairs | escapejs }}');
+  y_val = JSON.parse('{{ mi_value | escapejs }}');
+  // console.log(y_val);
+  // console.log(y_val);
+  // var x_val = {{gene_pairs}};
+  // var y_val = {{mi_value}};
+  var trace1 = {
+    x: x_val.slice(0,31),
+    y: y_val.slice(0,31),
+    type: 'bar',
+    // text: ['4.17 below the mean', '4.17 below the mean', '0.17 below the mean', '0.17 below the mean', '0.83 above the mean', '7.83 above the mean'],
+    marker: {
+      color: 'rgb(44,127,124)'
+    }
+  };
+
+  var data = [trace1];
+
+  var layout = {
+    title: 'Mutual Information for Top XXX Gene Pairs',
+    font:{
+      family: 'Raleway, snas-serif'
+    },
+    showlegend: false,
+    xaxis: {
+      title: 'Gene Pairs',
+      tickangle: -45
+    },
+    yaxis: {
+      title: 'Mutual Information',
+      zeroline: false,
+      gridwidth: 2
+    },
+    bargap :0.05
+  };
+
+  Plotly.newPlot('myDiv', data, layout);
+
+  // {% endwith %}
+  // {% endwith %}
+  </script>

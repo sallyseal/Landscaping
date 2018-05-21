@@ -6,7 +6,8 @@ from django.db import models
 # Class to define the gene with gene name and go term
 class Gene(models.Model):
     gene_id = models.CharField(max_length=20, unique=True)
-    go_term = models.CharField(max_length=1000)
+    # Scrape data from NCBI gene summary or BioMart
+    # summary = models.CharField(max_length=1000)
 
     def __str__(self):
         return self.gene_id
@@ -38,5 +39,3 @@ class MutualInformation(models.Model):
                               related_name='gene2')
     value = models.FloatField()
     dataset = models.CharField(max_length=1000)
-    # Can we create "pair" here which combines the two names with & for bar graph
-    # columns?
