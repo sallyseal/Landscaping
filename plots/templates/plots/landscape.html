@@ -4,32 +4,52 @@
 
 {% load static %}
 
-<!-- <p>{{ exp }}</p>
+<p>{{ k_factor }}</p>
+<!-- <p>{{ Z }}</p> -->
 
-<p>{{ Z }}</p> -->
 
-<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div style="height: 900px;" id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
   <script>
   Z = JSON.parse('{{ Z | escapejs }}')
+  console.log(Z)
   var data = [ {
       z: Z,
       type: 'contour',
       colorscale: [[0, 'rgb(184,237,237)'], [0.25, 'rgb(140,214,211)'], [0.45, 'rgb(105,173,171)'], [0.65, 'rgb(70,133,131)'], [0.85, 'rgb(35,92,91)'], [1, 'rgb(0,51,51)']]
-      // contours: {
-      //   coloring: 'heatmap'
-      // }
+
   }
 ];
 
 var layout = {
-title: 'Basic Contour Plot'
+title: 'Landscape Plot of X and Y'
 }
 
 Plotly.newPlot('myDiv', data, layout);
   </script>
 
-<!-- {% if request.GET.gene_id %}
-  <p>{{message}}</p>
-{% endif %} -->
+
+  <div style="height: 900px;" id="3D"><!-- Plotly chart will be drawn inside this DIV --></div>
+    <script>
+    Z = JSON.parse('{{ Z | escapejs }}')
+
+    var data = [{
+           z: Z,
+           type: 'surface'
+        }];
+
+var layout = {
+  title: '3D Landscape Plot',
+  // autosize: false,
+  // width: 1000,
+  // height: 800,
+  margin: {
+    l: 10,
+    r: 10,
+    b: 30,
+    t: 30,
+  }
+};
+  Plotly.newPlot('3D', data, layout);
+    </script>
 
 {% endblock %}

@@ -2,7 +2,6 @@
 from html import escape
 from django.shortcuts import render
 from django.http import HttpResponse
-
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -10,22 +9,16 @@ from django.views import generic
 from django.templatetags.static import static
 from django.views.generic import ListView
 from scipy import stats
+from django.conf import settings
+from django.db.models import Q
 
 from .models import Gene, Sample, Expression, MutualInformation
 
 import pandas as pd
 import numpy as np
 import json
+import math
 
-from django.conf import settings
-from django.db.models import Q
-
-
-# import html.parser
-
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the plots index.")
 
 # Create your views here.
 
@@ -48,6 +41,7 @@ class Mi1View(generic.base.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Get list of gene1 and gene2 and corresponding mi value
         gene1_id = []
         gene2_id = []
         mi_value = []
@@ -55,16 +49,58 @@ class Mi1View(generic.base.TemplateView):
             gene1_id.append(i.gene1.gene_id)
             gene2_id.append(i.gene2.gene_id)
             mi_value.append(i.value)
-
+        # # Combined gene1 and gene2 with + to give gene pairs
         gene_pairs = []
         for i in range(len(gene1_id)):
             gene_pair = gene1_id[i] + ' + ' + gene2_id[i]
             gene_pairs.append(gene_pair)
-
+        # Return this information
         context['gene_pairs'] = json.dumps(gene_pairs)
         context['gene1_id'] = gene1_id
         context['gene2_id'] = gene2_id
         context['mi_value'] = json.dumps(mi_value)
+
+        # Code to produce Z values for mi heatmap plots
+        # Also need a list of gene1 and gene2 as X and Y
+
+        genes = Gene.objects.all()
+        gene_map = {}
+        gene_self = []
+        for gene in genes:
+            gene_map[gene.id] = gene.gene_id
+            # When 2 genes are same give a value of 1 - this is the diagonal in
+            # the heatmap
+            gene_self.append({
+                'id': 0,
+                'gene1_id': gene.id,
+                'gene2_id': gene.id,
+                'value': 1,
+                'dataset': '1'
+            })
+
+        mis = MutualInformation.objects.values()
+        query = str(mis.query)
+        # Add gene_self to get full matrix including self comparisons
+        df = pd.DataFrame(list(mis) + gene_self)
+        df = pd.pivot_table(df, values='value', index='gene1_id', columns='gene2_id')
+        df.rename(columns=gene_map, index=gene_map, inplace=True)
+        # Mirror transpose the matrix accross the diagonal line
+        for gene1 in df.axes[1]:
+            for gene2 in df.index:
+                if np.isnan(df.loc[gene1][gene2]):
+                    df.loc[gene1][gene2] = df.loc[gene2][gene1]
+
+        # Remove nans replace with 0 as precaution
+        df = df.fillna(0)
+
+        x = df.index
+        y = df.columns
+        z = df.values
+
+        context['gene_map'] = json.dumps({v: k for k, v in gene_map.items()})
+        context['x'] = json.dumps(x.tolist())
+        context['y'] = json.dumps(y.tolist())
+        context['z'] = json.dumps(z.tolist())
         return context
 
 # Landscape page
@@ -75,12 +111,13 @@ class LandscapeView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        gene1 = self.request.GET.get('gene1')
+        gene2 = self.request.GET.get('gene2')
         exp = Expression.objects \
-            .filter(Q(gene__id=1) | Q(gene__id=2)) \
+            .filter(Q(gene__id=gene1) | Q(gene__id=gene2)) \
             .values()
 
         query = str(exp.query)
-        print(query)
         df = pd.DataFrame(list(exp))
         df = pd.pivot_table(df, values='value', index='gene_id',
                             columns='sample_id')
@@ -92,20 +129,53 @@ class LandscapeView(generic.TemplateView):
         ymin = g2_exp.min()
         ymax = g2_exp.max()
 
-        X, Y = np.mgrid[xmin:xmax:200j, ymin:ymax:200j]
+        X, Y = np.mgrid[xmin:xmax:100j, ymin:ymax:100j]
         positions = np.vstack([X.ravel(), Y.ravel()])
         # values already stacked correctly due to pd.pivot_table
-        kernel = stats.gaussian_kde(df.values, bw_method='silverman')
+        kernel = stats.gaussian_kde(df.values, 'silverman')
+        # This is the bandwidth as calculated by Silverman method
+        k_factor = kernel.factor
+        print(k_factor)
         Z = np.reshape(kernel(positions).T, X.shape)
+        Z = np.log(Z)
+        Z = -(Z)
 
 
+        # print(Z)
+        # print('this is a')
+        # print(a)
+        # for i in a:
+        #     neg_log_z = []
+        #     for j in i:
+        #         b = math.log(j)
+        #         neg_log_z.append(j)
+        # print(neg_log_z)
+        # ZL =
+        # for i in Z:
+
+        # for i in Z:
+        #     Z = math.log(Z)
+        # print(Z)
+        # Z = math.log(Z)
+        # Z = -Z
+
+        context['k_factor'] = k_factor
         context['Z'] = json.dumps(Z.tolist())
         return context
 
-    def landscape(request):
-        query = request.GET.get('gene_id')
-        message = "Gene evaluated: {}".format(query)
-        template = "landscape.html"
-        context = { 'message': message,
-        }
-        return render(request, template, context)
+
+    # def landscape(request, gene__id):
+    #     o =
+
+        # return HttpResponseRedirect('/plots/landscape/' + o.drugbank_ID)
+
+
+
+
+# def landscape(request, gene__id):
+#     query = request.GET.get('gene_id')
+#     message = "Gene evaluated: {}".format(query)
+#     template = "landscape.html"
+#     context = { 'message': message,
+#     }
+#     return render(request, template, context)

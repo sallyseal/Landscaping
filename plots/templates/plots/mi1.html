@@ -55,60 +55,75 @@
     <h2>MI test</h2>
 
 
-    <p>{{ gene1_id }}</p>
-    <p>{{ mi_value }}</p>
-    <p>{{ gene_pairs }}</p>
 
-    <p> {{ a }}</p>
+
+    <!-- <p>{{ z }}</p>
+    <p>{{ x }}</p>
+    <p>{{ y }}</p> -->
+
+
+
 
 {% endblock %}
 
 
 
-<!-- PLOTTING THE MI GRAPH -->
-<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-<!-- JS FOR MI PLOT -->
-  <script>
-  // {% with y_val=mi_value %}
-  // {% with x_val=gene_pairs %}
-  x_val = JSON.parse('{{ gene_pairs | escapejs }}');
-  y_val = JSON.parse('{{ mi_value | escapejs }}');
-  // console.log(y_val);
-  // console.log(y_val);
-  // var x_val = {{gene_pairs}};
-  // var y_val = {{mi_value}};
-  var trace1 = {
-    x: x_val.slice(0,31),
-    y: y_val.slice(0,31),
-    type: 'bar',
-    // text: ['4.17 below the mean', '4.17 below the mean', '0.17 below the mean', '0.17 below the mean', '0.83 above the mean', '7.83 above the mean'],
-    marker: {
-      color: 'rgb(44,127,124)'
-    }
-  };
 
-  var data = [trace1];
 
-  var layout = {
-    title: 'Mutual Information for Top XXX Gene Pairs',
-    font:{
-      family: 'Raleway, snas-serif'
-    },
-    showlegend: false,
-    xaxis: {
-      title: 'Gene Pairs',
-      tickangle: -45
-    },
-    yaxis: {
-      title: 'Mutual Information',
-      zeroline: false,
-      gridwidth: 2
-    },
-    bargap :0.05
-  };
+  <!-- PLOTTING THE MI HEATMAP WITH GENE NAMES -->
+    <div style="height: 900px; width: 1800px;" id="mi_heatmap"><!-- Plotly chart will be drawn inside this DIV --></div>
+      <script>
+      var X = JSON.parse('{{ x | escapejs }}')
+      var Y = JSON.parse('{{ y | escapejs }}')
+      var Z = JSON.parse('{{ z | escapejs }}')
+      var geneMap = JSON.parse('{{ gene_map | escapejs }}')
 
-  Plotly.newPlot('myDiv', data, layout);
+      var xvalues = X
+      var yvalues = Y
+      var zvalues = Z
 
-  // {% endwith %}
-  // {% endwith %}
-  </script>
+      var colorscaleValue = [
+      [0, '#93C8C8'],
+      [1, '#003333']
+      ];
+
+      var layout = {
+        title: '<b>MUTUAL INFORMATION BETWEEN GENE PAIRS</b>',
+        titlefont: {
+          size: 20,
+          color: 'black'
+        },
+        xaxis: {
+          title: '<b>GENE</b>',
+          titlefont: {
+            size: 18,
+            color: 'black',
+          }
+        },
+        yaxis: {
+          title: '<b>GENE</b>',
+          titlefont: {
+            size: 18,
+            color: 'black'
+          }
+        }
+      };
+
+      var data = [ {
+        x: xvalues,
+        y: yvalues,
+        z: zvalues,
+        type: 'heatmap',
+        colorscale: colorscaleValue,
+        showscale: true
+      }
+    ];
+    var miHeatmap = document.getElementById('mi_heatmap');
+    Plotly.plot('mi_heatmap', data, layout);
+
+    mi_heatmap.on('plotly_click', function(data){
+      var xGeneName = data.points[0].x;
+      var yGeneName = data.points[0].y;
+      window.location = '/plots/landscape?gene1=' + geneMap[xGeneName] + '&gene2=' + geneMap[yGeneName];
+    })
+    </script>
