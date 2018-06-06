@@ -36,8 +36,13 @@
 .header2 {color:#2B616D !important; background-color:#fff}
 
 /*GREY COLOR FOR PARAGRAPHS*/
-.paragraph-d {color:#17252A !important; background-color:#FEFFFF}
+.paragraph-d {
+  color:#17252A !important;
+  background-color:#FEFFFF;
+}
+
 .paragraph-l {color:#FEFFFF !important; background-color:#17252A}
+
 
 hr {
     display: block;
@@ -76,7 +81,7 @@ hr {
 
 .background_1 {
   color: #FEFFFF;
-  opacity: 0.85;
+  opacity: 0.95;
   width: 100%;
   height: 360px;
   background-image: url("images/background_1.jpg");
@@ -118,4 +123,19 @@ hr {
 .padding{
   padding-left: 180px;
   padding-right: 180px;
+}
+
+.first {
+    width: 100%;
+    height: 1000px;
+}
+
+.second {
+    width: 100%;
+    height: 1000px;
+}
+
+/*PADDING*/
+.header-padding{
+  padding-top: 30px;
 }

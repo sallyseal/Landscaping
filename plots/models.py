@@ -6,8 +6,7 @@ from django.db import models
 # Class to define the gene with gene name and go term
 class Gene(models.Model):
     gene_id = models.CharField(max_length=20, unique=True)
-    # Scrape data from NCBI gene summary or BioMart
-    # summary = models.CharField(max_length=1000)
+    # summary = models.CharField(max_length=10000)
 
     def __str__(self):
         return self.gene_id
@@ -18,8 +17,8 @@ class Gene(models.Model):
 class Sample(models.Model):
     name = models.CharField(max_length=1000)
     # cell_type = models.CharField(max_length=100)
-    # pca1 = models.FloatField()
-    # pca2 = models.FloatField()
+    # pc1 = models.FloatField()
+    # pc2 = models.FloatField()
     dataset = models.CharField(max_length=1000)
 
 

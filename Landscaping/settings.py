@@ -25,7 +25,7 @@ SECRET_KEY = '4n(sz8j%uzeso+%&(&$-2p=&u40#jg*$$yg))-w0$4gu+n-v3c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # Must include any apps that you create here e.g. plots
 
 INSTALLED_APPS = [
-    'plots.apps.PlotsConfig', 
+    'plots.apps.PlotsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
