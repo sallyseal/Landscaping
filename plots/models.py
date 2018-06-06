@@ -17,6 +17,9 @@ class Gene(models.Model):
 # Dataset 1 = blood data; Dataset2 = neuronal data
 class Sample(models.Model):
     name = models.CharField(max_length=1000)
+    # cell_type = models.CharField(max_length=100)
+    # pca1 = models.FloatField()
+    # pca2 = models.FloatField()
     dataset = models.CharField(max_length=1000)
 
 
@@ -27,6 +30,7 @@ class Expression(models.Model):
     sample = models.ForeignKey(Sample, on_delete=models.CASCADE)
     gene = models.ForeignKey(Gene, on_delete=models.CASCADE)
     value = models.FloatField()
+
 
 # Class to define the mi values
 # This must be created into a db table
@@ -39,3 +43,10 @@ class MutualInformation(models.Model):
                               related_name='gene2')
     value = models.FloatField()
     dataset = models.CharField(max_length=1000)
+
+
+# Class to define the pca values
+# class Pca(models.Model):
+#     cell = models.ForeignKey(Sample, on_delete=models.CASCADE)
+#     pca1 = models.FloatField()
+#     pca2 = models.FloatField()

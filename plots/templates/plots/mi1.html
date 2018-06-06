@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+{% extends 'plots/base.html' %}
 
-<!-- Plotly.js -->
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% block content %}
 
 {% load static %}
 
-<body>
-
-<!-- Navigation Bar-->
-<div class="w3-bar w3-theme w3-padding">
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">Home</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">About</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">Contact</a>
-  <div class="w3-dropdown-hover">
-    <button class="w3-button w3-padding-16">
-      Data <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Blood Cell Differentiation</a>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Neuronal Differentiation</a>
-    </div>
-  </div>
-</div>
 
 <div class="w3-row w3-border w3-padding">
   <div class="w3-half w3-container w3-border">
@@ -51,25 +26,6 @@
 
 
 
-{% block content %}
-    <h2>MI test</h2>
-
-
-
-
-    <!-- <p>{{ z }}</p>
-    <p>{{ x }}</p>
-    <p>{{ y }}</p> -->
-
-
-
-
-{% endblock %}
-
-
-
-
-
   <!-- PLOTTING THE MI HEATMAP WITH GENE NAMES -->
     <div style="height: 900px; width: 1800px;" id="mi_heatmap"><!-- Plotly chart will be drawn inside this DIV --></div>
       <script>
@@ -82,10 +38,40 @@
       var yvalues = Y
       var zvalues = Z
 
+      // var colorscaleValue = [
+      // [0, '#93C8C8'],
+      // [1, '#003333']
+      // ];
+
+      // var colorscaleValue = [
+      // [0, '#6FB98F'],
+      // [1, '#004445']
+      // ];
+
+      // var colorscaleValue = [
+      // [0, '#C4DFE6'],
+      // [1, '#003B46']
+      // ];
+
       var colorscaleValue = [
-      [0, '#93C8C8'],
+      [0, '#B2DBD5'],
       [1, '#003333']
       ];
+
+      // var colorscaleValue = [
+      // [0, '#B2DBD5'],
+      // [1, '#FA8D62']
+      // ];
+
+      // var colorscaleValue = [
+      // [0, '#FA8D62'],
+      // [1, '#2B616D']
+      // ];
+
+      // var colorscaleValue = [
+      // [0, '#2B616D'],
+      // [1, '#FA8D62']
+      // ];
 
       var layout = {
         title: '<b>MUTUAL INFORMATION BETWEEN GENE PAIRS</b>',
@@ -127,3 +113,5 @@
       window.location = '/plots/landscape?gene1=' + geneMap[xGeneName] + '&gene2=' + geneMap[yGeneName];
     })
     </script>
+
+    {% endblock %}

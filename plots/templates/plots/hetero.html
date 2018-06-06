@@ -7,13 +7,13 @@
 <div class="w3-padding">
 </div>
 
-<div class="w3-container w3-center w3-padding">
-  <h2 class="header1"><b>BLOOD CELL DIFFERENTIATION</b></h2>
+<div class="w3-center w3-padding">
+  <h2 class="header1"><b>HETEROGENEITY</b></h2>
   <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
-<div class="w3-container w3-center w3-padding">
-  <h4 class="header1"><b>WHAT WE KNOW</b></h4>
+<div class="w3-center w3-padding">
+  <h4 class="header1"><b>xxx</b></h4>
   <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
@@ -21,16 +21,34 @@
   <img class="center_img" src="{% static 'plots/images/land_diff_4.png' %}">
 </div>
 
-<div class="w3-container w3-center w3-padding">
-  <h4 class="header1"><b>WHAT WE SUSPECT</b></h4>
+<div class="w3-center w3-padding">
+  <h4 class="header1"><b>xxx</b></h4>
   <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
-<div class="w3-container w3-center w3-padding">
-  <h4 class="header1"><b>THE INVESTIGATION</b></h4>
+<div class="w3-center w3-padding">
+  <h4 class="header1"><b>xxx</b></h4>
   <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 
+<!-- FOR THE PCA PLOTS -->
+<div id="scatter"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+  var trace1 = {
+    x: [1, 2, 3, 4],
+    y: [10, 15, 13, 17],
+    mode: 'markers',
+    marker: {
+      size: 12,
+      colorscale: [[0, 'rgb(178,219,213)'], [1, 'rgb(0,51,51)']]
+    }
+  };
 
+  var data = [trace1];
+
+  var layout = {};
+
+Plotly.newPlot('scatter', data, layout);
+  </script>
 
 {% endblock %}

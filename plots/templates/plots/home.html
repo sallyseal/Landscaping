@@ -5,57 +5,71 @@
 {% load static %}
 
 <!-- Header -->
-<header class="w3-container w3-theme-d4 w3-padding">
-  <!-- <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> -->
-  <div class="w3-center">
-  <h1 class="w3-xxxlarge w3-animate-bottom">NAVIGATING CELLULAR DIFFERENTIATION</h1>
-  <h4>THROUGH EPIGENETIC LANDSCAPES</h4>
-    <div class="w3-padding-32">
-      <button class="w3-btn w3-xlarge w3-theme-dark w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:900;">DATA</button>
+<header class="w3-container background_1 w3-padding">
+
+</header>
+
+<header class="background_2 w3-container w3-theme-d6">
+  <div class="w3-padding-32 w3-center">
+  <h1 class="padding w3-padding-32 w3-xxxlarge w3-animate-bottom">NAVIGATING CELLULAR DIFFERENTIATION THROUGH EPIGENETIC LANDSCAPES</h1>
+  <h4 class="padding">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
+  <!-- <h4>MEGAN COOMER</h4> -->
+    <div class="top-padding">
+      <a href="#section1"> <button class="w3-btn w3-large button1 w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:400;">READ MORE</button></a>
     </div>
+    <i class="fa fa-angle-double-down" style="font-size:48px;"></i>
   </div>
 </header>
 
-<!-- Modal -->
-<!-- <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-top">
-      <header class="w3-container w3-theme-l1">
-        <span onclick="document.getElementById('id01').style.display='none'"
-        class="w3-button w3-display-topright">×</span>
-        <h4>Oh snap! We just showed you a modal..</h4>
-        <h5>Because we can <i class="fa fa-smile-o"></i></h5>
-      </header>
-      <div class="w3-padding">
-        <p>Cool huh? Ok, enough teasing around..</p>
-        <p>Go to our <a class="w3-btn" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
-      </div>
-      <footer class="w3-container w3-theme-l1">
-        <p>Modal footer</p>
-      </footer>
-    </div>
-</div> -->
+<div class="main" id="section1">
+</div>
 
-<div class="w3-row w3-border w3-padding">
-  <div class="w3-half w3-container w3-border">
-    <h4 class="header1"><b>CELLULAR DIFFERENTIATION</b></h4>
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-half w3-container">
+    <h4 class="header1-dark"><b>CELLULAR DIFFERENTIATION</b></h4>
     <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
   </div>
-  <div class="w3-half w3-container w3-border">
+  <div class="w3-half w3-container">
     <img src="{% static 'plots/images/diff_trad.png' %}">
   </div>
 </div>
 <br>
 
-<div class="w3-row w3-border w3-padding">
-  <div class="w3-half w3-container w3-border">
+<div class="w3-row w3-padding header1-light">
+  <div class="w3-half w3-container">
     <!-- I want to split this in two horizontally and have 2 images in black and white -->
     <img src="{% static 'plots/images/moonlandscape.jpg' %}">
   </div>
-  <div class="w3-half w3-container w3-border">
-    <h4><b>EPIGENETIC LANDSCAPES</b></h4>
-    <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+  <div class="w3-half w3-container">
+    <h4 class="header1-light"><b>CELLULAR HETEROGENEITY</b></h4>
+    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-half w3-container">
+    <h4 class="header1-dark"><b>EPIGENETIC LANDSCAPES</b></h4>
+    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+  </div>
+  <div class="w3-half w3-container">
+    <img src="{% static 'plots/images/diff_trad.png' %}">
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-light">
+  <div class="w3-half w3-container">
+    <!-- I want to split this in two horizontally and have 2 images in black and white -->
+    <img src="{% static 'plots/images/moonlandscape.jpg' %}">
+  </div>
+  <div class="w3-half w3-container">
+    <h4 class="header1-light"><b>CELLULAR HETEROGENEITY</b></h4>
+    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
   </div>
 </div>
 <br>
@@ -63,8 +77,8 @@
 <div class="w3-row-padding w3-center w3-margin-top">
 <div class="w3-half">
   <div class="w3-card w3-container" style="min-height:460px">
-  <h3>Blood Cell Differentiation Data</h3><br>
-  <i class="fa fa-line-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <h4 class="header1-dark"><b>EXPLORING HETEROGENEITY</b></h4><br>
+  <a href="/plots/hetero/"> <i class="fa fa-line-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
   <p>Built-in responsiveness</p>
   <p>Mobile first fluid grid</p>
   <p>Fits any screen sizes</p>
@@ -74,14 +88,41 @@
 
 <div class="w3-half">
   <div class="w3-card w3-container" style="min-height:460px">
-  <h3>Neuronal Cell Differentiation Data</h3><br>
-  <i class="fa fa-bar-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <h4 class="header1-dark"><b>EXPLORING THE LANDSCAPE</b></h4><br>
+  <a href="/plots/mi1/"> <i class="fa fa-bar-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
   <p>Standard CSS only</p>
   <p>Easy to learn</p>
   <p>No need for jQuery</p>
   <p>No JavaScript library</p>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
 
 <!-- <div class="w3-half">
   <div class="w3-card w3-container" style="min-height:460px">

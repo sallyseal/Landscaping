@@ -12,6 +12,9 @@
 <!-- Plotly.js -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
 {% load static %}
 
 <!-- My CSS -->
@@ -20,22 +23,48 @@
 <body>
 
 <!-- Navigation Bar-->
-<div class="w3-bar w3-theme-d4 w3-padding">
-  <a href="#" class="w3-bar-item w3-button w3-padding-16"><b>Home</b></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16"><b>About</b></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16"><b>Contact</b></a>
+<div class="w3-bar w3-theme-d6 w3-padding">
+  <a href="/plots/" class="w3-bar-item w3-button w3-padding-16">INTRO</a>
+  <a href="/plots/about/" class="w3-bar-item w3-button w3-padding-16">BACKGROUND</a>
+  <!-- <a href="/plots/contact/" class="w3-bar-item w3-button w3-padding-16">ABOUT WEBSITE</a> -->
   <div class="w3-dropdown-hover">
     <button class="w3-button w3-padding-16">
-      <b>Data</b> <i class="fa fa-caret-down"></i>
+      DATA
     </button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Blood Cell Differentiation</a>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Neuronal Differentiation</a>
+      <a href="/plots/hetero/" class="w3-bar-item w3-button">Heterogeneity</a>
+      <a href="/plots/mi1/" class="w3-bar-item w3-button">Landscapes</a>
     </div>
   </div>
+  <a href="/plots/contact/" class="w3-bar-item w3-button w3-padding-16">SUMMARY</a>
+  <a href="/plots/reference/" class="w3-bar-item w3-button w3-padding-16">REFERENCES</a>
 </div>
+
+
+
 {% block content %}
 {% endblock %}
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-d6 w3-padding-16 w3-center">
+  <div class="w3-padding-32">
+    <a href="#"> <button class="w3-btn w3-large button1 w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:400;">NEXT SECTION</button></a>
+  </div>
+  <ul>
+    <li class="inline">MEGAN COOMER</li>
+    <li class="inline">|</li>
+    <li class="inline">IMPERIAL COLLEGE</li>
+    <li class="inline">|</li>
+    <li class="inline"><a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3-SCHOOLS</a></li>
+  </ul>
+  <!-- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  <div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-theme-light w3-padding">Go To Top</span> 
+    <a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+  <p>Remember to check out our  <a href="w3css_references.asp" class="w3-btn w3-theme-light" target="_blank">W3.CSS Reference</a></p> -->
+</footer>
 
 </body>
 </html>

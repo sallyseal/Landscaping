@@ -30,9 +30,16 @@ class HomeView(generic.base.TemplateView):
 class AboutView(generic.base.TemplateView):
     template_name = 'plots/about.html'
 
-# Contact page - static
+# Background page - static
 class ContactView(generic.base.TemplateView):
     template_name = 'plots/contact.html'
+
+class ReferenceView(generic.base.TemplateView):
+    template_name = 'plots/reference.html'
+
+# Heterogeneity page - static - will need to change
+class HeteroView(generic.base.TemplateView):
+    template_name = 'plots/hetero.html'
 
 # Mi1 page
 class Mi1View(generic.base.TemplateView):
@@ -140,42 +147,6 @@ class LandscapeView(generic.TemplateView):
         Z = np.log(Z)
         Z = -(Z)
 
-
-        # print(Z)
-        # print('this is a')
-        # print(a)
-        # for i in a:
-        #     neg_log_z = []
-        #     for j in i:
-        #         b = math.log(j)
-        #         neg_log_z.append(j)
-        # print(neg_log_z)
-        # ZL =
-        # for i in Z:
-
-        # for i in Z:
-        #     Z = math.log(Z)
-        # print(Z)
-        # Z = math.log(Z)
-        # Z = -Z
-
         context['k_factor'] = k_factor
         context['Z'] = json.dumps(Z.tolist())
         return context
-
-
-    # def landscape(request, gene__id):
-    #     o =
-
-        # return HttpResponseRedirect('/plots/landscape/' + o.drugbank_ID)
-
-
-
-
-# def landscape(request, gene__id):
-#     query = request.GET.get('gene_id')
-#     message = "Gene evaluated: {}".format(query)
-#     template = "landscape.html"
-#     context = { 'message': message,
-#     }
-#     return render(request, template, context)

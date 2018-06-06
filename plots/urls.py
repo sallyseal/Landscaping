@@ -14,4 +14,6 @@ urlpatterns = [
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('mi1/', views.Mi1View.as_view(), name='mi1'),
     path('landscape/', views.LandscapeView.as_view(), name='landscape'),
+    path('hetero/', views.HeteroView.as_view(), name='hetero'),
+    path('reference/', views.ReferenceView.as_view(), name='reference'),
 ]
