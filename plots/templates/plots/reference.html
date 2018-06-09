@@ -9,13 +9,13 @@
   <h4 class="header1-dark"><b>REFERENCES</b></h4>
 </div>
 
-<ol class="paragraph-d">
+<ol class="w3-large paragraph-d">
   <li><a href="#">Ref1</a></li>
   <li><a href="#">Ref2</a></li>
   <li><a href="#">Ref3</a></li>
 </ol>
 
-<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div class="img-center" style="height: 800px; width: 1200px;" id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
   <script>
 
     var trace1 = {
@@ -26,8 +26,8 @@
     marker: {
         size: 10,
         // THIS WILL BE FROM MY EXPRESSION VALUES
-        color: [35, 10, 50, 40, 18, 30,13,20],
-        colorscale: [[0, 'rgb(23,37,42)'], [1, 'rgb(178,219,213)']],
+        color: [35, 10, 50, 40, 18, 30,13],
+        colorscale: [[0, 'rgb(1,18,25)'], [0.14, 'rgb(3,84,93)'], [0.28, 'rgb(3,108,114)'], [0.42, 'rgb(39,148,115)'], [0.56, 'rgb(74,149,64)'], [0.7, 'rgb(145,192,60)'], [0.84, 'rgb(195,217,66)'], [1, 'rgb(245,241,72)']],
         // MIN AND MAX EXP VALUE MUST BE JSON DUMPPED IN VIEWS
         cmin: 0,
         cmax: 50,

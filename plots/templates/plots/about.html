@@ -4,6 +4,126 @@
 
 {% load static %}
 
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-half w3-container">
+    <h4 class="header1-dark"><b>THE DATASET</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify">Single cell gene expression data was obtained from a study in which human megakaryocyte-erythroid progenitor (MEP) cells were isolated and a panel of 87 genes profiled to better understand the differentiation process of erythrocytes and megakaryocytes in human hematopoiesis (REF TO PAPER HERE). MEP cells are able to differentiate into either erythrocytes or megakaryocytes and form part of the hematopoietic stem cell differentiation process laid out in Figure XXX.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">CD34+ blood cells were obtained from three healthy volunteers, cells were stained using a 10-fluorochrome panel and MEP cells sorted using flow cytometry. Individual cells were aliquoted into 96-well PCR plates for quantitative real-time PCR. An overview of the experimental protocol used to generate the data is outlined in Figure XXX.</p>
+    <img class="img-center" src="{% static 'plots/images/mepdiff5.png' %}" style="width: 100%">
+    <figcaption class="w3-center paragraph-d "><b>Figure 2: </b>xxx.</figcaption>
+  </div>
+  <div class="w3-half w3-container">
+    <img class="left-padding" src="{% static 'plots/images/dataset.png' %}">
+    <figcaption class="w3-center paragraph-d"><b>Figure 5: </b>Experimental workflow followed by Psaila et al.</figcaption>
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-light">
+  <div class="w3-half w3-container">
+    <!-- I want to split this in two horizontally and have 2 images in black and white -->
+    <img src="{% static 'plots/images/mi.png' %}" style="width=100%">
+    <figcaption class="w3-center paragraph-l "><b>Figure 2: </b>xxx.</figcaption>
+  </div>
+  <div class="w3-half w3-container">
+    <h4 class="header1-light"><b>FEATURE EXTRACTION & MUTUAL INFORMATION</b></h4>
+    <p class="w3-large paragraph-l" style="text-align:justify">Since epigenetic landscapes are 3D surface plots where the X and Y co-ordinates represent expression values and the the Z co-ordinate encapsulated the potential landscape (see below section for further details), it is only possible to render a landscape for a pair of genes. Consequently, feature extraction is necessary to determine which pairs of genes might yield the most informative landscapes. While Pearson Correlation is often used to measure the linear relationship between two variables a major downfall is it’s inability to capture non-linear dependencies in the data.</p>
+    <p class="w3-large paragraph-l" style="text-align:justify">Consequently, tools from information theory are employed and the mutual information for each possible pair of genes is calculated using the Julia package InformationMeasures.jl. Mutual information measures the relationship between two random variables that are sampled simultaneously. In simple terms, we may think of it as how much one random variable tells us about the other or how much mutual information they share. The mutual information between two random variables X and Y, whose joint distribution is defined by P(X,Y) is given by:</p>
+    <p class="w3-large paragraph-l w3-center">`I(X;Y)=sum_(x in X)sum_(yinY)p(x,y)log(p(x,y)/p(x)p(y))`</p>
+    <p class="w3-large paragraph-l" style="text-align:justify">Where</p>
+    <p class="w3-large paragraph-l" style="text-align:justify">While relying on statistical tools to determine which pairs of genes may be most informative is useful, it is also important to be guided by the biological process in question and the literature available on which genetic players may drive and guide these processes. Consequently, it is important to have the ability to compute the landscape for any possible pair of genes and not only pairs characterised by a high mutual information.</p>
+    <p class="w3-large paragraph-l" style="text-align:justify">All possible pairs of genes within the dataset and the mutual information between them is presented in the form of a heatmap and is presented under the data landscape section of the website.
+    </p>
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-half w3-container">
+    <h4 class="header1-dark"><b>GENERATING THE LANDSCAPES</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify">While the Waddington landscape was only ever meant to be a qualitative representation of how gene expression directs cellular differentiation, mathematicians have in recent years put forward several proposals to construct a quantitative energy landscape. Different proposals are comprehensively reviewed in XXX including the limitations of the energy landscape proposal, but in essence the potential landscape is computed by obtaining the negative natural logarithm of the steady-state probability distribution. Formally:</p>
+    <p class="w3-large paragraph-d w3-center">`I(X;Y)=sum_(x in X)sum_(yinY)p(x,y)log(p(x,y)/p(x)p(y))`</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">Where XXX It is this U which we seek as it represents the potential landscape of the system.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">The probability distribution is estimated using kernel density estimation – a non-parametric technique used to estimated the probability distribution of a random variable. Computations are implemented using the Python Gaussian kernel density estimation function scipy.stats.gaussian_kde.
+    </p>
+    <p class="w3-large paragraph-d" style="text-align:justify">Due to the vast number of potential landscapes that can be generated given the dataset, combined with a need to analyse any landscape the user sees fit (those with high mutual information or those which don’t share a high mutual information, but are biologically interesting) a website backend is imperative. While it is possible to create 1500 static landscapes and load the images into the Django environment, it is far more practical and dynamic to compute and generate the landscapes in real time making use of Django’s Python framework. Although this requires a robust backend to be setup with initial labour costs, it allows significant downstream flexibility for both the creator and the user.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">In order to plot a 3D landscape the gene expression values for gene 1 (X-dimension) and gene 2 (Y-dimension) are required as well as the potential landscape or the steady-state probability distribution (Z-dimension). While the expression values for each gene are contained within the database of the website, the probability distribution for a given X and Y is computed in real-time in the Django views depending on which pair of genes the user would like to visualise the landscape for. The X, Y and Z co-ordinates for a given landscape are subsequently stored as Django variables ready to be deployed into a JavaScript environment for visualisation.</p>
+  </div>
+  <div class="w3-half w3-container">
+    <img class="left-padding" src="{% static 'plots/images/new_landscape.png' %}">
+    <figcaption class="w3-center paragraph-d"><b>Figure 5: </b>Experimental workflow followed by Psaila et al.</figcaption>
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-light">
+  <div class="w3-half w3-container">
+    <!-- I want to split this in two horizontally and have 2 images in black and white -->
+    <img src="{% static 'plots/images/landscapes.png' %}">
+    <figcaption class="w3-center paragraph-l "><b>Figure 2: </b>xxx.</figcaption>
+  </div>
+  <div class="w3-half w3-container">
+    <h4 class="header1-light"><b>VISUALIZING THE LANDSCAPES</b></h4>
+    <p class="w3-large paragraph-l" style="text-align:justify">Landscapes are plotted using the plotly.js graphing library allowing the user the ability to fully explore the landscape due to the interactivity associated with JavaScript. The X, Y and Z co-ordinates for any chosen landscape are imported from the views to the JavaScript graphing code to produce the user’s landscape of choice, in both 2 and 3 dimensions. A colour bar indicates the height of the Z dimension/potential landscape with the lightest colours representing the crests and the darkest colours the valleys, corresponding to basins of attraction where cells are most likely to end up. The landscapes are accessed from the data landscape tab where a user is first presented with a heatmap representing mutual information between all gene pairs. The user is then able to click on any block within the heatmap (representing a pair of genes) thereby generating the landscape in real time.</p>
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-half w3-container">
+    <h4 class="header1-dark"><b>PRINCIPAL COMPONENT ANALYSIS WITH GENE EXPRESSION OVERLAY</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify">To further explore the dataset principal component analysis (PCA) is performed and shows that MEP cells are divided into two sub-populations by principal component 1. To begin investigating whether these sub-populations may potentially be two distinct groups exhibiting differential gene activity, each individual cell is able to be coloured according to the expression intensity of a particular gene within that cell. This represents an intuitive and visually assertive way to identify whether certain genes are more highly or lowly expressed in these MEP sub-populations. Again, as this data is part of the website backend it allows the user to explore differential gene expression in the dataset in an interactive way and overlay the expression intensity of any gene within the dataset onto the MEP sub-populations as defined by PCA.
+    </p>
+  </div>
+  <div class="w3-half w3-container">
+    <img class="leftm-padding" src="{% static 'plots/images/pca.png' %}">
+    <figcaption class="w3-center paragraph-d "><b>Figure 2: </b>xxx.</figcaption>
+  </div>
+</div>
+<br>
+
+<div class="w3-row w3-padding header1-light">
+  <div class="w3-half w3-container">
+    <!-- I want to split this in two horizontally and have 2 images in black and white -->
+    <img src="{% static 'plots/images/moonlandscape.jpg' %}">
+  </div>
+  <div class="w3-half w3-container">
+    <h4 class="header1-light"><b>OVERVIEW OF WORKFLOW</b></h4>
+    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+  </div>
+</div>
+<br>
+
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-half">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h4 class="header1-dark"><b>EXPLORING HETEROGENEITY</b></h4><br>
+  <a href="/plots/hetero/"> <i class="fa fa-line-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
+  <p>Built-in responsiveness</p>
+  <p>Mobile first fluid grid</p>
+  <p>Fits any screen sizes</p>
+  <p>PC Tablet and Mobile</p>
+  </div>
+</div>
+
+<div class="w3-half">
+  <div class="w3-card w3-container" style="min-height:460px">
+  <h4 class="header1-dark"><b>EXPLORING THE LANDSCAPE</b></h4><br>
+  <a href="/plots/mi1/"> <i class="fa fa-bar-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
+  <p>Standard CSS only</p>
+  <p>Easy to learn</p>
+  <p>No need for jQuery</p>
+  <p>No JavaScript library</p>
+  </div>
+</div>
+<br>
+
+
+
+
+
+
 <div class="w3-center header-padding">
   <h4 class="header1"><b>THE DATA</b></h4>
   <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

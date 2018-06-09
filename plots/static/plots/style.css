@@ -11,7 +11,14 @@
 .w3-theme-d5 {color:#fff !important; background-color:#46CCC6 !important}
 
 /*NEW COLOR SCHEME*/
-.w3-theme-d6 {color:#fff !important; background-color:#17252A !important}
+/*.w3-theme-d6 {color:#fff !important; background-color:#17252A !important}*/
+.w3-theme-d7 {color:#fff !important; background-color:#2B7A78 !important}
+.w3-theme-d8 {color:#fff !important; background-color:#3AAFA9 !important}
+.w3-theme-d9 {color:#fff !important; background-color:#DEF2F1 !important}
+.w3-theme-d10 {color:#fff !important; background-color:#FEFFFF !important}
+.w3-theme-11 {color:#fff !important; background-color:#FFB6A7 !important}
+
+.w3-theme-d6 {color:#fff !important; background-color:#011219 !important}
 .w3-theme-d7 {color:#fff !important; background-color:#2B7A78 !important}
 .w3-theme-d8 {color:#fff !important; background-color:#3AAFA9 !important}
 .w3-theme-d9 {color:#fff !important; background-color:#DEF2F1 !important}
@@ -31,18 +38,30 @@
 .w3-hover-border-theme:hover {border-color:#45b8ac !important}
 
 /*COLOR FOR HEADERS*/
-.header1-dark {color:#17252A !important; background-color:#FEFFFF}
-.header1-light {color:#FEFFFF !important; background-color:#17252A}
+.header1-dark {color:#011219 !important; background-color:#FEFFFF}
+.header1-light {color:#FEFFFF !important; background-color:#011219}
 .header2 {color:#2B616D !important; background-color:#fff}
 
 /*GREY COLOR FOR PARAGRAPHS*/
 .paragraph-d {
-  color:#17252A !important;
+  color:#011219 !important;
   background-color:#FEFFFF;
 }
 
-.paragraph-l {color:#FEFFFF !important; background-color:#17252A}
+.paragraph-l {color:#FEFFFF !important; background-color:#011219}
 
+figcaption {
+  line-height: 200%;
+}
+
+p {
+  line-height: 200%;
+  padding-top: 20px;
+}
+
+li {
+  padding-top: 20px;
+}
 
 hr {
     display: block;
@@ -73,7 +92,7 @@ hr {
   color: #FEFFFF;
   opacity: 0.77;
   width: 100%;
-  height: 950px;
+  height: 900px;
   background-image: url("images/background_1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -83,14 +102,14 @@ hr {
   color: #FEFFFF;
   opacity: 0.95;
   width: 100%;
-  height: 360px;
-  background-image: url("images/background_1.jpg");
+  height: 320px;
+  background-image: url("images/newbackground.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
 .background_2{
-  height: 570px;
+  height: 660px;
   width: 100%;
 }
 
@@ -113,7 +132,7 @@ hr {
 }
 
 .top-padding {
-  padding-top: 70px;
+  padding-top: 45px;
 }
 
 .button-padding{
@@ -138,4 +157,45 @@ hr {
 /*PADDING*/
 .header-padding{
   padding-top: 30px;
+}
+
+.left-padding {
+  padding-left: 250px;
+}
+
+.leftm-padding {
+  padding-left: 100px;
+}
+
+.right-padding {
+  padding-right: 250px;
+}
+
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+
+.entropy-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/*FIGURE LEGEND PADDING*/
+.fig1-pad {
+  padding-left: 170px;
+  padding-right: 170px;
+}
+
+.fig3-pad {
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+/*FIGURE PADDING*/
+.fig3 {
+  padding-top: 60px;
 }

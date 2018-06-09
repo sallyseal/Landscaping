@@ -12,8 +12,7 @@
 <header class="background_2 w3-container w3-theme-d6">
   <div class="w3-padding-32 w3-center">
   <h1 class="padding w3-padding-32 w3-xxxlarge w3-animate-bottom">NAVIGATING CELLULAR DIFFERENTIATION THROUGH EPIGENETIC LANDSCAPES</h1>
-  <h4 class="padding">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h4>
-  <!-- <h4>MEGAN COOMER</h4> -->
+  <h4 class="padding">The development of multi-cellular organisms relies on cellular differentiation, the process whereby less specialised cells adopt a more specialised form and function. The path traversed by cells along this journey of differentiation consists of potential bifurcations where cells must “choose” a trajectory to follow, ultimately dictating a cell’s fate. This cell-fate decision is largely informed by differential gene activity in individual cells and epigenetic landscapes are frequently used as an intuitive way to represent this complex relationship between gene activity and cell fates during development. This project looks at how cell-fate decisions can be represented by computing and constructing the epigenetic landscapes of key gene pairs – identified using tools from information theory. Additionally, it explores cellular heterogeneity in an apparent homogeneous cell population based on single cell transcriptomics. </h4>
     <div class="top-padding">
       <a href="#id01"> <button class="w3-btn w3-large button1 w3-hover-light-grey" onclick="smoothScroll(document.getElementById('id01')).style.display='block'" style="font-weight:400;">READ MORE</button></a>
     </div>
@@ -27,11 +26,12 @@
 <div class="w3-row w3-padding header1-dark">
   <div class="w3-half w3-container">
     <h4 class="header1-dark"><b>CELLULAR DIFFERENTIATION</b></h4>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">Cellular differentiation is characterised by an organised increase in cell mass and a subsequent phenotypic diversification of the expanding cell populations. It is a fundamental process in development biology and the rationale behind a single cell giving rise to a multi-cellular organism comprising a diverse range of tissues.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">As each cell in the body contains an identical copy of DNA, it is differential gene expression that is ultimately responsible for this phenotypic diversification and the driver behind a cell adopting a particular cell-fate. Considering the importance of this biological process in developmental biology, there is a significant interest in better understanding the spatio-temporal precision with which cells adopt new identities. Moreover, we seek an insight into the dynamics that govern this fundamental yet complex biological process in the hope to manipulate it for medical advances.</p>
   </div>
   <div class="w3-half w3-container">
-    <img src="{% static 'plots/images/diff_trad.png' %}">
+    <img src="{% static 'plots/images/diff_trad.png' %}" style="width: 100%">
+    <figcaption class="fig1-pad w3-center paragraph-d"><b>Figure 1: </b>A schematic representing the potential trajectories a cell may encounter during the differentiation process. Each fork represents a bifurcation which is coupled with an increase in cellular specificity as a cell differentiates towards it’s ultimate cell-fate.</figcaption>
   </div>
 </div>
 <br>
@@ -39,12 +39,12 @@
 <div class="w3-row w3-padding header1-light">
   <div class="w3-half w3-container">
     <!-- I want to split this in two horizontally and have 2 images in black and white -->
-    <img src="{% static 'plots/images/moonlandscape.jpg' %}">
+    <img src="" style="width: 100%">
+    <figcaption class="w3-center paragraph-l "><b>Figure 2: </b>xxx.</figcaption>
   </div>
   <div class="w3-half w3-container">
-    <h4 class="header1-light"><b>CELLULAR HETEROGENEITY</b></h4>
-    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+    <h4 class="header1-light"><b>CELLULAR HETEROGENEITY & GENE EXPRESSION</b></h4>
+    <p class="w3-large paragraph-l" style="text-align:justify">Since altered gene activity drives and informs differentiation, single cell expression data represents an opportunity to study the dynamics of cellular differentiation. Indeed, cell populations that are otherwise considered homogeneous show great heterogeneity on the single cell level in the expression of a gene or group of genes. Such observed heterogeneity may indicate potential bifurcations or cell fates that the cell may adopt with different probabilities. Consequently, single cell gene expression data provides a natural framework in which to study cell-fate decisions driven by genetic changes and epigenetic landscapes provide an intuitive way to visualise the dynamics of this complex relationship.</p>
   </div>
 </div>
 <br>
@@ -52,50 +52,48 @@
 <div class="w3-row w3-padding header1-dark">
   <div class="w3-half w3-container">
     <h4 class="header1-dark"><b>EPIGENETIC LANDSCAPES</b></h4>
-    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">Published in the 1950’s by Conrad Waddington, epigenetic landscapes were originally a concept likening the process of cellular differentiation to a marble rolling down a hill. Here, the divergent downhill valleys represent different paths a cell may take during the differentiation process. Starting at the top, the cell has a multitude of paths which it may follow but as it traverses downhill the potential paths become more limited and as such the cell’s potential to become any other cell diminishes. The Landscape represents the dynamics where the lowest points on the landscape known as the attractor states correspond to the most likely destination a cell may find itself in and are thought to represent cell types. This model is able to qualitatively describe an extraordinarily complicated process very intuitively.
+    </p>
+    <p class="w3-large paragraph-d" style="text-align:justify">Since gene expression drives cell-fate it is simultaneously responsible for shaping the epigenetic landscape, thereby steering the choices a cell may make in it’s process towards differentiation. For example, gene expression levels of the chosen cell-fate are up-regulated, while the expression levels of the alternate fate are down-regulated. The Waddington landscape provides an extraordinarily simple, yet effective qualitative tool to better understand how gene activity determines the dynamics of the cell-fate system. However, in recent years there has been a substantial drive by mathematicians to represent this landscape in a quantitative way providing an opportunity to explore the dynamics of the system (see background section for further details on how these landscapes are computed).</p>
   </div>
   <div class="w3-half w3-container">
-    <img src="{% static 'plots/images/diff_trad.png' %}">
+    <img class="fig3 img-center" src="{% static 'plots/images/landscape.jpg' %}" style="width: 95%">
+    <figcaption class="w3-center paragraph-d fig3-pad"><b>Figure 3: </b>The original Waddington epigenetic landscape likening cellular differentiation to a marble rolling down a hill. Different valleys represent potential paths a cell may traverse during differentiation.
+    </figcaption>
   </div>
 </div>
 <br>
 
-<div class="w3-row w3-padding header1-light">
+<!-- <div class="w3-row w3-padding header1-light">
   <div class="w3-half w3-container">
     <!-- I want to split this in two horizontally and have 2 images in black and white -->
-    <img src="{% static 'plots/images/moonlandscape.jpg' %}">
+    <!-- <img class="img-center" src="{% static 'plots/images/aims4.png' %}" style="width: 40%">
+    <figcaption class="w3-center paragraph-l "><b>Figure 4: </b>A workflow of the aims of this project.</figcaption>
   </div>
   <div class="w3-half w3-container">
-    <h4 class="header1-light"><b>CELLULAR HETEROGENEITY</b></h4>
-    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+    <h4 class="header1-light"><b>AIMS</b></h4>
+    <p class="w3-large paragraph-l">The aims of this project are to:</p>
+    <ol class="w3-large paragraph-l">
+      <li>Identify which pairs of genes generate the most informative epigenetic landscapes using tools from information theory</li>
+      <li>Compute and construct these landscapes in a way that intuitively represents the relationship between gene activity and cell-fate in a high dimensional dataset</li>
+      <li>Create a website with a robust and dynamic backend to quickly compute the multitude of landscapes in real time and represent the data in a manner that is clear and logical to the user</li>
+    </ol>
+  </div>
+</div>
+<br> -->
+
+<div class="w3-row w3-padding header1-light">
+  <div class="w3-container">
+    <h4 class="w3-center header1-light"><b>AIMS</b></h4>
+    <p class="w3-large paragraph-l">The aims of this project are to:</p>
+    <ol class="w3-large paragraph-l">
+      <li>Identify which pairs of genes generate the most informative epigenetic landscapes using tools from information theory</li>
+      <li>Compute and construct these landscapes in a way that intuitively represents the relationship between gene activity and cell-fate in a high dimensional dataset</li>
+      <li>Create a website with a robust and dynamic backend to quickly compute the multitude of landscapes in real time and represent the data in a manner that is clear and logical to the user</li>
+    </ol>
   </div>
 </div>
 <br>
-
-<div class="w3-row-padding w3-center w3-margin-top">
-<div class="w3-half">
-  <div class="w3-card w3-container" style="min-height:460px">
-  <h4 class="header1-dark"><b>EXPLORING HETEROGENEITY</b></h4><br>
-  <a href="/plots/hetero/"> <i class="fa fa-line-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
-  <p>Built-in responsiveness</p>
-  <p>Mobile first fluid grid</p>
-  <p>Fits any screen sizes</p>
-  <p>PC Tablet and Mobile</p>
-  </div>
-</div>
-
-<div class="w3-half">
-  <div class="w3-card w3-container" style="min-height:460px">
-  <h4 class="header1-dark"><b>EXPLORING THE LANDSCAPE</b></h4><br>
-  <a href="/plots/mi1/"> <i class="fa fa-bar-chart w3-margin-bottom w3-text-theme" style="font-size:120px"></i></a>
-  <p>Standard CSS only</p>
-  <p>Easy to learn</p>
-  <p>No need for jQuery</p>
-  <p>No JavaScript library</p>
-  </div>
-</div>
 
 <script>
 window.smoothScroll = function(target) {
@@ -122,24 +120,6 @@ window.smoothScroll = function(target) {
 }
 </script>
 
-<!-- <div class="w3-half">
-  <div class="w3-card w3-container" style="min-height:460px">
-  <h3>Design</h3><br>
-  <i class="fa fa-diamond w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
-  <p>Paper like design</p>
-  <p>Bold colors and shadows</p>
-  <p>Equal across platforms</p>
-  <p>Equal across devices</p>
-  </div>
-</div> -->
-</div>
-
-<hr>
-<div class="w3-center">
-  <h4><b>MUTUAL INFORMATION</b></h4>
-  <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-<br>
 
 <div class="w3-container">
 <hr>
