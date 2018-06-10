@@ -6,7 +6,7 @@ from django.db import models
 # Class to define the gene with gene name and go term
 class Gene(models.Model):
     gene_id = models.CharField(max_length=20, unique=True)
-    summary = models.CharField(max_length=10000)
+    # summary = models.CharField(max_length=10000)
 
     def __str__(self):
         return self.gene_id
@@ -16,7 +16,7 @@ class Gene(models.Model):
 # Dataset 1 = blood data; Dataset2 = neuronal data
 class Sample(models.Model):
     name = models.CharField(max_length=1000)
-    cell_type = models.CharField(max_length=100)
+    # cell_type = models.CharField(max_length=100)
     dataset = models.CharField(max_length=1000)
 
 
@@ -43,7 +43,8 @@ class MutualInformation(models.Model):
 
 
 # Class to define the pca values
-class Pca(models.Model):
-    sample = models.ForeignKey(Sample, on_delete=models.CASCADE)
-    pc1 = models.FloatField()
-    pc2 = models.FloatField()
+# class Pca(models.Model):
+#     sample = models.ForeignKey(Sample, on_delete=models.CASCADE)
+#     pc1 = models.FloatField()
+#     pc2 = models.FloatField()
+#     cell_type = models.CharField(max_length=100)

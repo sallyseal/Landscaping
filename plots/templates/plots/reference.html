@@ -4,7 +4,6 @@
 
 {% load static %}
 
-
 <div class="w3-container w3-center header-padding">
   <h4 class="header1-dark"><b>REFERENCES</b></h4>
 </div>
@@ -15,80 +14,6 @@
   <li><a href="#">Ref3</a></li>
 </ol>
 
-<div class="img-center" style="height: 800px; width: 1200px;" id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <script>
 
-    var trace1 = {
-    // X AND Y WILL BE PC1 AND PC2
-    x: [1, 2, 3, 4,10,12,14],
-    y: [10, 15, 13, 17,2,4,11],
-    mode: 'markers',
-    marker: {
-        size: 10,
-        // THIS WILL BE FROM MY EXPRESSION VALUES
-        color: [35, 10, 50, 40, 18, 30,13],
-        colorscale: [[0, 'rgb(1,18,25)'], [0.14, 'rgb(3,84,93)'], [0.28, 'rgb(3,108,114)'], [0.42, 'rgb(39,148,115)'], [0.56, 'rgb(74,149,64)'], [0.7, 'rgb(145,192,60)'], [0.84, 'rgb(195,217,66)'], [1, 'rgb(245,241,72)']],
-        // MIN AND MAX EXP VALUE MUST BE JSON DUMPPED IN VIEWS
-        cmin: 0,
-        cmax: 50,
-        showscale: true,
-    }
-    };
-
-    var data = [ trace1];
-
-    var layout = {
-      title: 'Principal Component Analysis with Gene Expression Overlay',
-      titlefont: {
-        size: 20,
-        color: '#17252A'
-      },
-      xaxis: {
-        title: 'Pricipal Component 1 <br> (9.35% Variance Explained)',
-        titlefont: {
-          size: 16,
-          color: '#17252A',
-        }
-      },
-      yaxis: {
-        title: 'Principal Component 2 <br> (8.26% Variance Explained)',
-        titlefont: {
-          size: 16,
-          color: '#17252A'
-        }
-      }
-    };
-
-    Plotly.newPlot('myDiv', data, layout);
-
-  </script>
-
-  <div class="first"><button type="button" onclick="smoothScroll(document.getElementById('second'))">Click Me!</button></div>
-  <div class="second" id="second">Hi</div>
-
-  <script>
-    window.smoothScroll = function(target) {
-      var scrollContainer = target;
-      do { //find scroll container
-          scrollContainer = scrollContainer.parentNode;
-          if (!scrollContainer) return;
-          scrollContainer.scrollTop += 1;
-      } while (scrollContainer.scrollTop == 0);
-
-      var targetY = 0;
-      do { //find the top of target relatively to the container
-          if (target == scrollContainer) break;
-          targetY += target.offsetTop;
-      } while (target = target.offsetParent);
-
-      scroll = function(c, a, b, i) {
-          i++; if (i > 30) return;
-          c.scrollTop = a + (b - a) / 30 * i;
-          setTimeout(function(){ scroll(c, a, b, i); }, 20);
-      }
-      // start scrolling
-      scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-  }
-</script>
 
 {% endblock %}

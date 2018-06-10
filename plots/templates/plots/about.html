@@ -9,7 +9,7 @@
     <h4 class="header1-dark"><b>THE DATASET</b></h4>
     <p class="w3-large paragraph-d" style="text-align:justify">Single cell gene expression data was obtained from a study in which human megakaryocyte-erythroid progenitor (MEP) cells were isolated and a panel of 87 genes profiled to better understand the differentiation process of erythrocytes and megakaryocytes in human hematopoiesis (REF TO PAPER HERE). MEP cells are able to differentiate into either erythrocytes or megakaryocytes and form part of the hematopoietic stem cell differentiation process laid out in Figure XXX.</p>
     <p class="w3-large paragraph-d" style="text-align:justify">CD34+ blood cells were obtained from three healthy volunteers, cells were stained using a 10-fluorochrome panel and MEP cells sorted using flow cytometry. Individual cells were aliquoted into 96-well PCR plates for quantitative real-time PCR. An overview of the experimental protocol used to generate the data is outlined in Figure XXX.</p>
-    <img class="img-center" src="{% static 'plots/images/mepdiff5.png' %}" style="width: 100%">
+    <img class="img-center" src="{% static 'plots/images/mepdiff6.png' %}" style="width: 100%">
     <figcaption class="w3-center paragraph-d "><b>Figure 2: </b>xxx.</figcaption>
   </div>
   <div class="w3-half w3-container">
@@ -27,7 +27,7 @@
   </div>
   <div class="w3-half w3-container">
     <h4 class="header1-light"><b>FEATURE EXTRACTION & MUTUAL INFORMATION</b></h4>
-    <p class="w3-large paragraph-l" style="text-align:justify">Since epigenetic landscapes are 3D surface plots where the X and Y co-ordinates represent expression values and the the Z co-ordinate encapsulated the potential landscape (see below section for further details), it is only possible to render a landscape for a pair of genes. Consequently, feature extraction is necessary to determine which pairs of genes might yield the most informative landscapes. While Pearson Correlation is often used to measure the linear relationship between two variables a major downfall is it’s inability to capture non-linear dependencies in the data.</p>
+    <p class="w3-large paragraph-l" style="text-align:justify">Since epigenetic landscapes are 3D surface plots where the X and Y co-ordinates represent expression values and the the Z co-ordinate encapsulates the potential landscape (see below section for further details), it is only possible to render a landscape for a pair of genes. Consequently, feature extraction is necessary to determine which pairs of genes might yield the most informative landscapes. While Pearson Correlation is often used to measure the linear relationship between two variables a major downfall is it’s inability to capture non-linear dependencies in the data.</p>
     <p class="w3-large paragraph-l" style="text-align:justify">Consequently, tools from information theory are employed and the mutual information for each possible pair of genes is calculated using the Julia package InformationMeasures.jl. Mutual information measures the relationship between two random variables that are sampled simultaneously. In simple terms, we may think of it as how much one random variable tells us about the other or how much mutual information they share. The mutual information between two random variables X and Y, whose joint distribution is defined by P(X,Y) is given by:</p>
     <p class="w3-large paragraph-l w3-center">`I(X;Y)=sum_(x in X)sum_(yinY)p(x,y)log(p(x,y)/p(x)p(y))`</p>
     <p class="w3-large paragraph-l" style="text-align:justify">Where</p>

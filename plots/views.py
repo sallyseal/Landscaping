@@ -12,7 +12,7 @@ from scipy import stats
 from django.conf import settings
 from django.db.models import Q
 
-from .models import Gene, Sample, Expression, MutualInformation
+from .models import Gene, Sample, Expression, MutualInformation, Pca
 
 import pandas as pd
 import numpy as np
@@ -37,9 +37,52 @@ class ContactView(generic.base.TemplateView):
 class ReferenceView(generic.base.TemplateView):
     template_name = 'plots/reference.html'
 
-# Heterogeneity page - static - will need to change
+# Heterogeneity page
 class HeteroView(generic.base.TemplateView):
     template_name = 'plots/hetero.html'
+    context_object_name = 'this_hetero'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pc1 = []
+        pc2 = []
+        for i in Pca.objects.all():
+            pc1.append(i.pc1)
+            pc2.append(i.pc2)
+        context['pc1'] = json.dumps(pc1)
+        context['pc2'] = json.dumps(pc2)
+
+        # Need expression values for these cells for the coloring
+        # Depending on which gene the user selects those expression values must
+        # be overlayed onto the PCA plot
+        gene = self.request.GET.get('gene')
+        exp = Expression.objects \
+            .filter(gene__id=gene, sample__cell_type='MEP').values()
+
+        query = str(exp.query)
+        df = pd.DataFrame(list(exp))
+        df = pd.pivot_table(df, values='value', index='gene_id',
+                            columns='sample_id')
+        gene_exp = df.iloc[0, :]
+
+        cmax = gene_exp.max()
+        cmin = gene_exp.min()
+
+        context['gene_exp'] = json.dumps(gene_exp.tolist())
+        context['cmax'] = json.dumps(cmax)
+        context['cmin'] = json.dumps(cmin)
+
+        genes = []
+        summary = []
+        for i in Gene.objects.all():
+            genes.append(i.gene_id)
+            summary.append(i.summary)
+
+        context['genes'] = genes
+        context['summary'] = summary    
+
+        return context
+
 
 # Mi1 page
 class Mi1View(generic.base.TemplateView):
@@ -56,7 +99,7 @@ class Mi1View(generic.base.TemplateView):
             gene1_id.append(i.gene1.gene_id)
             gene2_id.append(i.gene2.gene_id)
             mi_value.append(i.value)
-        # # Combined gene1 and gene2 with + to give gene pairs
+        # Combined gene1 and gene2 with + to give gene pairs
         gene_pairs = []
         for i in range(len(gene1_id)):
             gene_pair = gene1_id[i] + ' + ' + gene2_id[i]
@@ -142,7 +185,7 @@ class LandscapeView(generic.TemplateView):
         kernel = stats.gaussian_kde(df.values, 'silverman')
         # This is the bandwidth as calculated by Silverman method
         k_factor = kernel.factor
-        print(k_factor)
+
         Z = np.reshape(kernel(positions).T, X.shape)
         Z = np.log(Z)
         Z = -(Z)
