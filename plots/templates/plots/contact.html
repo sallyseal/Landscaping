@@ -6,19 +6,20 @@
 
 <div class="w3-row w3-padding header1-dark">
   <div class="w3-half w3-container">
-    <h4 class="header1-dark"><b>SUMMARY</b></h4>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+    <h4 class="header1-dark"><b>SUMMARY & FUTURE WORK</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify">This project produces 3D epigenetic landscapes for any possible pair of genes in the given dataset by calculating the potential landscape, or the steady state probability distribution given a pair of genes and their associated expression values, using Gaussian kernel density estimation. In addition, the mutual information between all possible gene pairs is calculated and displayed in order to inform on which of these landscapes may be most interesting. Also, PCA is used to further investigate the given dataset and gene expression overlaid onto the PCA plot allowing a thorough and visually intuitive exploration into differential gene expression within the MEP cell population. This exploration strongly hints that MEP cells may already be transcriptionally primed for a single-lineage output of either erythrocyte or megakaryocycte phenotypes. This can be seen when analysing the expression of megakaryocyte or erythrocyte associated genes, respectively. The sub-population to the left on the PCA plot displays increased expression levels of megakaryocyte-associated genes when compared to the sub-population on the right, while the sub-population to the right exhibits increased expression levels of erythrocyte-associated genes. This indicates that these cells may be transcriptionally primed to become megakaryocyte or erythrocyte cells, specifically and in fact do not have bipotent differential potential.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">In addition to the analyses carried out, the data forms part of a fully fledged Django website comprising a SQL relational database allowing for extreme versatility and functionality. The website is scalable and is able to take any dataset containing single cell expression values and produce the same visually intuitive investigation.</p>
   </div>
   <div class="w3-half w3-container">
-    <img src="{% static 'plots/images/diff_trad.png' %}">
+    <h4 class="invisible1"><b>SUMMARY & FUTURE WORK</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div>
 </div>
 <br>
 
-<div class="w3-row w3-padding header1-light">
+<!-- <div class="w3-row w3-padding header1-light">
   <div class="w3-half w3-container">
-    <!-- I want to split this in two horizontally and have 2 images in black and white -->
     <img src="{% static 'plots/images/moonlandscape.jpg' %}">
   </div>
   <div class="w3-half w3-container">
@@ -27,35 +28,20 @@
     <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
   </div>
 </div>
-<br>
+<br> -->
 
-<div class="w3-padding">
-</div>
-
-<div class="w3-container w3-center w3-padding">
-  <h2 class="header1"><b>BLOOD CELL DIFFERENTIATION</b></h2>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-container w3-center w3-padding">
-  <h4 class="header1"><b>WHAT WE KNOW</b></h4>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-container w3-padding">
-  <img class="center_img" src="{% static 'plots/images/land_diff_4.png' %}">
-</div>
-
-<div class="w3-container w3-center w3-padding">
-  <h4 class="header1"><b>WHAT WE SUSPECT</b></h4>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-container w3-center w3-padding">
-  <h4 class="header1"><b>THE INVESTIGATION</b></h4>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-
+<!-- Footer -->
+<footer class="w3-container w3-theme-d6 w3-padding-16 w3-center">
+  <div class="w3-padding-32">
+    <a href="/plots/reference/"> <button class="w3-btn w3-large button1 w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:400;">REFERENCES</button></a>
+  </div>
+  <ul>
+    <li class="inline">MEGAN COOMER</li>
+    <li class="inline">|</li>
+    <li class="inline">IMPERIAL COLLEGE</li>
+    <li class="inline">|</li>
+    <li class="inline"><a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3-SCHOOLS</a></li>
+  </ul>
+</footer>
 
 {% endblock %}

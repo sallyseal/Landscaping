@@ -4,166 +4,143 @@
 
 {% load static %}
 
-<p>{{ genes }}</p>
-<p>{{ summary }}</p>
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-half w3-container">
+    <h4 class="header1-dark"><b>EXPLORING HETEROGENEITY IN THE DATASET</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify">The principal component analysis plot below shows how MEP cells may be further divided into two sub-populations based on principal component 1 which accounts for just under 10% of the variance explained. Each dot on the plot represents a single MEP cell. In order to further explore these sub-populations based on their gene expression activity, the user may make use of the interactive plot below.</p>
+    <p class="w3-large paragraph-d" style="text-align:justify">From the drop down menu, select the gene whose expression level you wish to assess in the single cells comprising the plot. Once selected, the expression intensity of the selected gene is overlaid onto the PCA plot with dark coloured cells representing low expression, green coloured cells medium expression and yellow coloured cells high expression (refer to the colour bar associated with the plot). This allows for a visually intuitive and interactive way to explore differential gene expression in this MEP cell dataset. The table to the right indicates which genes within this dataset are known to be associated with an erythrocyte or megakaryocyte phenotype specifically. By overlaying these particular genes’ expression, it opens up an investigation into whether cells may be transcriptionally primed for a single lineage output (erythrocyte or megakaryocyte) at the MEP level already.</p>
+  </div>
+  <div class="w3-half w3-container">
+    <img class="img-center figvenn" src="{% static 'plots/images/venn1.png' %}" style="width: 60%">
+    <figcaption class="fig-top-pad fig-pad-venn w3-center paragraph-d"><b>Figure 9: </b>Venn diagram illustrating genes associated with either a megakaryocyte or erythrocyte type phenotype and the overlap between the two categories</figcaption>
+  </div>
+</div>
+<br>
 
-<button onclick="myAccFunc('Demo1')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align">Click here for a list of genes to overlay</button>
-<div id="Demo1" class="w3-hide">
-  <div class="w3-container">
-    <li>Gene Name</li>
+<!-- <div class="spacer">
+</div> -->
+
+<div class="w3-row w3-padding w3-container w3-theme-d6">
+  <div class="w3 container dropdown">
+    <button onclick="myFunction()" class="dropbtn block"><b>CLICK HERE TO SELECT A GENE</b></button>
+    <div id="myDropdown" class="dropdown-content">
+      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+  {% for index in objects %}
+      <a href="/plots/hetero/?gene={{ index.id }}">{{ index.gene_id }}</a>
+  {% endfor %}
+    </div>
+  </div>
+  <div class="pcaplot img-center w3-card" style="height: 800px; width: 1200px;" id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <div class="pcaspacer">
   </div>
 </div>
 
+<div class="w3-row w3-padding header1-dark">
+  <div class="w3-container">
+    <h4 class="w3-center header1-dark"><b>SUMMARY OF THE OVERLAID GENE</b></h4>
+    <p class="w3-large paragraph-d" style="text-align:justify"><b>{{ gene.gene_id }}: </b>{{ gene.summary }}</p>
+  </div>
+</div>
 
-<div class="img-center" style="height: 800px; width: 1200px;" id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-  <script>
+<script>
+  var X = JSON.parse('{{ pc1 | escapejs }}')
+  var Y = JSON.parse('{{ pc2 | escapejs }}')
+  var C = JSON.parse('{{ gene_exp | escapejs }}')
+  var max = JSON.parse('{{ cmax | escapejs }}')
+  var min = JSON.parse('{{ cmin | escapejs }}')
+  console.log(max)
+  console.log(min)
+  var trace1 = {
+  x: X,
+  y: Y,
+  mode: 'markers',
+  marker: {
+      size: 10,
+      color: C,
+      colorscale: [[0, 'rgb(1,18,25)'], [0.14, 'rgb(3,84,93)'], [0.28, 'rgb(3,108,114)'], [0.42, 'rgb(39,148,115)'], [0.56, 'rgb(74,149,64)'], [0.7, 'rgb(145,192,60)'], [0.84, 'rgb(195,217,66)'], [1, 'rgb(245,241,72)']],
+      cmin: min,
+      cmax: max,
+      showscale: true,
+  }
+  };
 
-    var X = JSON.parse('{{ pc1 | escapejs }}')
-    var Y = JSON.parse('{{ pc2 | escapejs }}')
-    var C = JSON.parse('{{ gene_exp | escapejs }}')
-    var max = JSON.parse('{{ cmax | escapejs }}')
-    var min = JSON.parse('{{ cmin | escapejs }}')
-    console.log(max)
-    console.log(min)
-    var trace1 = {
-    // X AND Y WILL BE PC1 AND PC2
-    x: X,
-    y: Y,
-    mode: 'markers',
-    marker: {
-        size: 10,
-        // THIS WILL BE FROM MY EXPRESSION VALUES
-        color: C,
-        colorscale: [[0, 'rgb(1,18,25)'], [0.14, 'rgb(3,84,93)'], [0.28, 'rgb(3,108,114)'], [0.42, 'rgb(39,148,115)'], [0.56, 'rgb(74,149,64)'], [0.7, 'rgb(145,192,60)'], [0.84, 'rgb(195,217,66)'], [1, 'rgb(245,241,72)']],
-        // MIN AND MAX EXP VALUE MUST BE JSON DUMPPED IN VIEWS
-        cmin: min,
-        cmax: max,
-        showscale: true,
-    }
-    };
+  var data = [trace1];
 
-    var data = [ trace1];
-
-    var layout = {
-      title: 'Principal Component Analysis with Gene Expression Overlay',
+  var layout = {
+    title: 'Principal Component Analysis with Gene Expression Overlay',
+    titlefont: {
+      size: 20,
+      color: '#021B26'
+    },
+    xaxis: {
+      title: 'Pricipal Component 1 <br> (9.35% Variance Explained)',
       titlefont: {
-        size: 20,
-        color: '#17252A'
-      },
-      xaxis: {
-        title: 'Pricipal Component 1 <br> (9.35% Variance Explained)',
-        titlefont: {
-          size: 16,
-          color: '#17252A',
-        }
-      },
-      yaxis: {
-        title: 'Principal Component 2 <br> (8.26% Variance Explained)',
-        titlefont: {
-          size: 16,
-          color: '#17252A'
-        }
+        size: 16,
+        color: '#021B26',
       }
-    };
+    },
+    yaxis: {
+      title: 'Principal Component 2 <br> (8.26% Variance Explained)',
+      titlefont: {
+        size: 16,
+        color: '#021B26'
+      }
+    }
+  };
 
-    Plotly.newPlot('myDiv', data, layout);
+  Plotly.newPlot('myDiv', data, layout);
 
   </script>
 
-  <div class="first"><button type="button" onclick="smoothScroll(document.getElementById('second'))">Click Me!</button></div>
-  <div class="second" id="second">Hi</div>
 
-  <script>
-    window.smoothScroll = function(target) {
-      var scrollContainer = target;
-      do { //find scroll container
-          scrollContainer = scrollContainer.parentNode;
-          if (!scrollContainer) return;
-          scrollContainer.scrollTop += 1;
-      } while (scrollContainer.scrollTop == 0);
+<script>
+// FOR THE DROPDOWN
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+var maxGenes = 10;
 
-      var targetY = 0;
-      do { //find the top of target relatively to the container
-          if (target == scrollContainer) break;
-          targetY += target.offsetTop;
-      } while (target = target.offsetParent);
-
-      scroll = function(c, a, b, i) {
-          i++; if (i > 30) return;
-          c.scrollTop = a + (b - a) / 30 * i;
-          setTimeout(function(){ scroll(c, a, b, i); }, 20);
-      }
-      // start scrolling
-      scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+  var div = document.getElementById("myDropdown");
+  var a = div.getElementsByTagName("a");
+  for (i = maxGenes; i < a.length; i++) {
+    a[i].style.display = "none";
   }
+}
 
-  // Accordions
-  function myAccFunc(id) {
-      var x = document.getElementById(id);
-      if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
-      } else {
-          x.className = x.className.replace(" w3-show", "");
-      }
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  var filterCount = 0;
+  for (i = 0; i < a.length; i++) {
+    if ((a[i].innerHTML.toUpperCase().indexOf(filter) > -1) && (filterCount <= maxGenes)) {
+      a[i].style.display = "";
+      filterCount += 1;
+    } else {
+      a[i].style.display = "none";
+    }
   }
-
+}
 </script>
 
-<div class="w3-row w3-padding header1-dark">
-  <div class="w3-half w3-container">
-    <h4 class="header1-dark"><b>THE DATASET</b></h4>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+<div class="spacer">
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-theme-d6 w3-padding-16 w3-center">
+  <div class="w3-padding-32">
+    <a href="/plots/contact/"> <button class="w3-btn w3-large button1 w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:400;">NEXT SECTION</button></a>
   </div>
-  <div class="w3-half w3-container">
-    <img src="{% static 'plots/images/diff_trad.png' %}">
-  </div>
-</div>
-<br>
-
-<div class="w3-row w3-padding header1-light">
-  <div class="w3-half w3-container">
-    <!-- I want to split this in two horizontally and have 2 images in black and white -->
-    <img src="{% static 'plots/images/moonlandscape.jpg' %}">
-  </div>
-  <div class="w3-half w3-container">
-    <h4 class="header1-light"><b>FEATURE EXTRACTION & MUTUAL INFORMATION</b></h4>
-    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
-  </div>
-</div>
-<br>
-
-
-
-
-
-<div class="w3-padding">
-</div>
-
-<div class="w3-center w3-padding">
-  <h2 class="header1"><b>HETEROGENEITY</b></h2>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-center w3-padding">
-  <h4 class="header1"><b>xxx</b></h4>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-container w3-padding">
-  <img class="center_img" src="{% static 'plots/images/land_diff_4.png' %}">
-</div>
-
-<div class="w3-center w3-padding">
-  <h4 class="header1"><b>xxx</b></h4>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
-<div class="w3-center w3-padding">
-  <h4 class="header1"><b>xxx</b></h4>
-  <p class="paragraph w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-</div>
-
+  <ul>
+    <li class="inline">MEGAN COOMER</li>
+    <li class="inline">|</li>
+    <li class="inline">IMPERIAL COLLEGE</li>
+    <li class="inline">|</li>
+    <li class="inline"><a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3-SCHOOLS</a></li>
+  </ul>
+</footer>
 
 {% endblock %}

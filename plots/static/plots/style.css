@@ -18,7 +18,7 @@
 .w3-theme-d10 {color:#fff !important; background-color:#FEFFFF !important}
 .w3-theme-11 {color:#fff !important; background-color:#FFB6A7 !important}
 
-.w3-theme-d6 {color:#fff !important; background-color:#011219 !important}
+.w3-theme-d6 {color:#fff !important; background-color:#021B26 !important}
 .w3-theme-d7 {color:#fff !important; background-color:#2B7A78 !important}
 .w3-theme-d8 {color:#fff !important; background-color:#3AAFA9 !important}
 .w3-theme-d9 {color:#fff !important; background-color:#DEF2F1 !important}
@@ -30,7 +30,7 @@
 .w3-theme-action {color:#fff !important; background-color:#46CCC6 !important}
 
 .w3-theme {color:#fff !important; background-color:#45b8ac !important}
-.w3-text-theme {color:#3AAFA9 !important}
+.w3-text-theme {color:#4a9540 !important}
 .w3-border-theme {border-color:#45b8ac !important}
 
 .w3-hover-theme:hover {color:#fff !important; background-color:#4FE5DF !important}
@@ -38,17 +38,21 @@
 .w3-hover-border-theme:hover {border-color:#45b8ac !important}
 
 /*COLOR FOR HEADERS*/
-.header1-dark {color:#011219 !important; background-color:#FEFFFF}
-.header1-light {color:#FEFFFF !important; background-color:#011219}
+.header1-dark {color:#021B26 !important; background-color:#FEFFFF}
+.header1-light {color:#FEFFFF !important; background-color:#021B26}
 .header2 {color:#2B616D !important; background-color:#fff}
 
 /*GREY COLOR FOR PARAGRAPHS*/
 .paragraph-d {
-  color:#011219 !important;
+  color:#021B26 !important;
   background-color:#FEFFFF;
 }
 
-.paragraph-l {color:#FEFFFF !important; background-color:#011219}
+.paragraph-l {color:#FEFFFF !important; background-color:#021B26}
+
+h4 {
+  padding-top: 15px;
+}
 
 figcaption {
   line-height: 200%;
@@ -73,6 +77,14 @@ hr {
     border-width: 1px;
 }
 
+.invisible {
+  color: #021B26;
+}
+
+.invisible1 {
+  color: #FEFFFF;
+}
+
 /*LAYOUT*/
 .center_img {
   display: block;
@@ -80,7 +92,7 @@ hr {
 }
 
 .spacer {
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 .w4-container {
@@ -119,6 +131,10 @@ hr {
     border: 1px solid #ffff; /* White */
     border-radius: 6px;
     padding: 15px 38px;
+}
+
+.readmore {
+  padding-top: 30px;
 }
 
 .inline {
@@ -185,6 +201,10 @@ hr {
 }
 
 /*FIGURE LEGEND PADDING*/
+.fig-top-pad {
+  margin-top: 40px;
+}
+
 .fig1-pad {
   padding-left: 170px;
   padding-right: 170px;
@@ -195,7 +215,158 @@ hr {
   padding-right: 70px;
 }
 
+.figwork-pad {
+  padding-left: 170px;
+  padding-right: 170px;
+}
+
+.figmi-pad {
+  padding-left: 15px;
+  padding-right: 60px;
+}
+
+.figland-pad {
+  padding-left: 10px;
+  padding-right: 100px;
+}
+
+.figpca-pad {
+  padding-left: 25px;
+  padding-right: 120px;
+}
+
+.fig-pad-venn {
+  padding-left: 175px;
+  padding-right: 175px;
+}
+
 /*FIGURE PADDING*/
 .fig3 {
   padding-top: 60px;
+}
+
+.figaims {
+  padding-left: 370px;
+  padding-top: 60px;
+  padding-bottom: 25px;
+}
+
+.figwork {
+  padding-top: 85px;
+  padding-left: 300px;
+}
+
+.figmi {
+  padding-left: 40px;
+  padding-top: 35px;
+}
+
+.figland {
+  padding-top: 85px;
+  padding-left: 120px;
+}
+
+.figvenn {
+  padding-top: 90px;
+}
+
+/*GRAPH PADDING*/
+.pcaplot {
+  /*padding-top: 50px;*/
+  padding-bottom: 50px;
+}
+
+.pcaspacer {
+  margin-bottom: 60px;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #021B26;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #4a9540;
+}
+
+/* The search field */
+#myInput {
+  border-box: box-sizing;
+  /*background-image: url('searchicon.png');*/
+  /*background-position: 14px 12px;*/
+  /*background-repeat: no-repeat;*/
+  /*min-width: 290px;*/
+  width: 100%;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 290px;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #011219;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #4a9540;
+    color: #FEFFFF;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/*.active, .accordion:hover {
+    background-color: #021B26;
+}*/
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: #FEFFFF;
+    display: none;
+    overflow: hidden;
 }

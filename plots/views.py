@@ -61,8 +61,7 @@ class HeteroView(generic.base.TemplateView):
 
         query = str(exp.query)
         df = pd.DataFrame(list(exp))
-        df = pd.pivot_table(df, values='value', index='gene_id',
-                            columns='sample_id')
+        df = pd.pivot_table(df, values='value', index='gene_id', columns='sample_id')
         gene_exp = df.iloc[0, :]
 
         cmax = gene_exp.max()
@@ -78,8 +77,14 @@ class HeteroView(generic.base.TemplateView):
             genes.append(i.gene_id)
             summary.append(i.summary)
 
+        objects = Gene.objects.all()
+
+        context['objects'] = objects
         context['genes'] = genes
-        context['summary'] = summary    
+        context['summary'] = summary
+
+        gene_obj = Gene.objects.get(id=gene)
+        context['gene'] = gene_obj
 
         return context
 
@@ -163,6 +168,10 @@ class LandscapeView(generic.TemplateView):
 
         gene1 = self.request.GET.get('gene1')
         gene2 = self.request.GET.get('gene2')
+
+        gene1_obj = Gene.objects.get(id=gene1)
+        gene2_obj = Gene.objects.get(id=gene2)
+
         exp = Expression.objects \
             .filter(Q(gene__id=gene1) | Q(gene__id=gene2)) \
             .values()
@@ -192,4 +201,10 @@ class LandscapeView(generic.TemplateView):
 
         context['k_factor'] = k_factor
         context['Z'] = json.dumps(Z.tolist())
+
+        objects = Gene.objects.all()
+        context['objects'] = objects
+        context['gene1'] = gene1_obj
+        context['gene2'] = gene2_obj
+
         return context

@@ -6,35 +6,26 @@
 
 <div class="w3-row w3-padding header1-dark">
   <div class="w3-half w3-container">
-    <h4 class="header1-dark"><b>THE DATASET</b></h4>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-d">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+    <h4 class="header1-dark"><b>MUTUAL INFORMATION</b></h4>
+    <p class="w3-large paragraph-d">The heatmap to the right indicates the mutual information shared between all possible gene pairs within the dataset on a scale of 0 to 1. The map is coloured according to the amount of mutual information shared between gene pairs with darker colours representing less mutual information shared than lighter colours (see colour bar).  Hovering over a square identifies which two genes are being represented.</p>
+    <p class="w3-large paragraph-d">The mutual information is calculated using the Julia programming language, specifically the package InformationMeasures.jl and the values loaded into the website database to create an interactive heatmap. Clicking on a gene pair, represented by a coloured square in the heatmap, generates the 3D epigenetic landscape for that gene pair in real time.</p>
+    <p class="w3-large paragraph-d">By computing the mutual information shared between gene pairs we gain an insight into which gene pairs may be most informative. However, the user is not restricted to analysing the landscapes of genes which share a high mutual information but to any possible gene pair within the dataset deemed interesting, regardless of mutual information allowing added flexibility and comprehension into the landscape analysis of the dataset.</p>
+    <p class="w3-large paragraph-d">Please click on the heatmap to explore the 3D epigenetic landscapes before moving on to the next section which is a summary of the data.</p>
   </div>
   <div class="w3-half w3-container">
-    <img src="{% static 'plots/images/diff_trad.png' %}">
+    <div class="w3-container w3_center">
+      <div class="img-center" style="height: 900px; width: 870px;" id="mi_heatmap"><!-- Plotly chart will be drawn inside this DIV -->
+      </div>
+    </div>
   </div>
 </div>
 <br>
-
-<div class="w3-row w3-padding header1-light">
-  <div class="w3-half w3-container">
-    <!-- I want to split this in two horizontally and have 2 images in black and white -->
-    <img src="{% static 'plots/images/moonlandscape.jpg' %}">
-  </div>
-  <div class="w3-half w3-container">
-    <h4 class="header1-light"><b>FEATURE EXTRACTION & MUTUAL INFORMATION</b></h4>
-    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p class="w3-large paragraph-l">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
-  </div>
-</div>
-<br>
-
 
   <!-- PLOTTING THE MI HEATMAP WITH GENE NAMES -->
-<div class="w3-container w3_center">
-  <div class="img-center" style="height: 900px; width: 1700px;" id="mi_heatmap"><!-- Plotly chart will be drawn inside this DIV -->
-  </div>
-</div>
+<!-- <div class="w3-container w3_center"> -->
+  <!-- <div class="img-center" style="height: 900px; width: 1700px;" id="mi_heatmap"><!-- Plotly chart will be drawn inside this DIV -->
+  <!-- </div> -->
+<!-- </div> -->
   <script>
   var X = JSON.parse('{{ x | escapejs }}')
   var Y = JSON.parse('{{ y | escapejs }}')
@@ -46,18 +37,11 @@
   var zvalues = Z
 
 
-// BEEN USING THIS ONE
-  // var colorscaleValue = [
-  // [0, '#B2DBD5'],
-  // [1, '#003333']
-  // ];
-
-
   var layout = {
     title: '<b>MUTUAL INFORMATION BETWEEN ALL POSSIBLE GENE PAIRS</b>',
     titlefont: {
       size: 20,
-      color: '#011219'
+      color: '#021B26'
     },
     margin: {
       l: 130,
@@ -87,8 +71,21 @@
   })
   </script>
 
-<div class="spacer">
-</div>
+<!-- <div class="spacer">
+</div> -->
 
+<!-- Footer -->
+<footer class="w3-container w3-theme-d6 w3-padding-16 w3-center">
+  <div class="w3-padding-32">
+    <a href="/plots/contact/"> <button class="w3-btn w3-large button1 w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:400;">NEXT SECTION</button></a>
+  </div>
+  <ul>
+    <li class="inline">MEGAN COOMER</li>
+    <li class="inline">|</li>
+    <li class="inline">IMPERIAL COLLEGE</li>
+    <li class="inline">|</li>
+    <li class="inline"><a href="https://www.w3schools.com/w3css/w3css_templates.asp">W3-SCHOOLS</a></li>
+  </ul>
+</footer>
 
     {% endblock %}
