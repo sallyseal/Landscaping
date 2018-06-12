@@ -23,9 +23,10 @@ urlpatterns = [
 
 from django.contrib import admin
 from django.urls import include, path
+from plots import views
 
 urlpatterns = [
     path('plots/', include('plots.urls')),
-    # path('', views.homeView, name='home'),
+    path('', views.HomeView.as_view(), name='home'),
     path('admin/', admin.site.urls),
 ]
