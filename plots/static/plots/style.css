@@ -200,6 +200,11 @@ hr {
   padding-bottom: 100px;
 }
 
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
 /*FIGURE LEGEND PADDING*/
 .fig-top-pad {
   margin-top: 40px;
